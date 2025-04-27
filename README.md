@@ -4,7 +4,7 @@ Ce projet a pour objectif de familiariser les étudiants avec le développement 
 
 ## 🛠️ Technologies et outils
 
-- **JDK** : version 17
+- **JDK** : version 21
 - **Framework** : Spring Boot
 - **Base de données** : MySQL
 
