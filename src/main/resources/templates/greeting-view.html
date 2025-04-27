@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"></script>
+</head>
+<body>
+ <p th:utext="'Hello, '+${name}+'!'">Hello World!</p>
+ <h2 th:text="|Hello, ${name}!|">Hello World!</h2>
+ <h3 th:text="|you have ${age} years!|"></h3>
+ <!-- <p th:text="(${age}<60)?'you are young!':'You are very old!'"></p> -->
+ <p th:if="(${age}<60)" th:text="'you are young!'"></p>
+ <p th:unless="(${age}<60)">You are very old!</p>
+ <h3>Name list</h3>
+ <ul>
+    <li th:each="name:${names}" th:text="${name}"></li>
+ </ul>
+ <th:block th:switch="${user.role}">
+    <p th:case="administrator" th:text="|${user.name} is an administrator|"> User is an administrator</p>
+    <p th:case="manager"> User is a manager</p>
+    <p th:case="staff"> User is a staff</p>
+     <p th:case="*"> User has other role!</p>
+</th:block>
+
+</body>
+</html>

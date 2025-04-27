@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Person List</title>
+  <!--   <link rel="stylesheet" th:href="@{/webjars/bootswatch/dist/flatly/bootstrap.css}"> -->
+  <link th:replace="layout/default-layout::link">  
+  <script type="text/javascript"></script>
+</head>
+
+<!-- <body>
+    <div class="container">
+        <h1> People List</h1>  -->
+    
+   <body th:replace="layout/default-layout::body(title='People List')">
+      <div th:fragment="content"> 
+        <a th:href="@{/persons/create}" class="btn btn-primary">Add Person</a> <br /><br />
+    
+        <table class="table table-hover" th:unless="${#lists.isEmpty(persons)}">
+          <tr class="table-dark">
+            <th>id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Photo</th>
+            <th>Actions</th>
+          </tr>
+          <tr th:each="person,state:${persons}" th:class="${state.even}?table-light:''">
+            <td th:text="${person.id}"></td>
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.Age}"></td>
+            <td><img th:src="(${person.photo}?@{|images/${person.photo}|}:@{'images/default.png'})" alt="photo"
+                class="img-rounded img-responsive" style="max-height: 50px; max-width: 50px;"></td>
+            <td>
+              <div class="row">
+                <form class="col-4" th:action="@{|/persons/${person.id}/edit|}" method="get">
+                  <input type="submit" class="btn btn-success" value="Update">
+                </form>
+                <form class="col-8" th:action="@{|/persons/${person.id}/delete|}" method="Post">
+                  <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div class="alert alert-warning" th:if="${#lists.isEmpty(persons)}">
+          No person found !
+        </div>
+      </div>
+    <!-- 
+      <footer class="mt-5">
+        <p class="text-center">
+          &copy; <span th:text="${#dates.year(#dates.createNow())}"></span> MyFirstSpringMVCApp. All rights reserved
+        </p>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+      </footer> -->
+    </body>
+
+</html>

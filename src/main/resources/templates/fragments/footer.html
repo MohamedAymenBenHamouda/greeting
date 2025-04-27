@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"></script>
+</head>
+<body>
+    <footer class="mt-5">
+        <p class="text-center">
+          &copy; <span th:text="${#dates.year(#dates.createNow())}"></span>    MyFirstSpringMVCApp. All rights reserved
+        </p>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+      </footer>
+</body>
+</html>
